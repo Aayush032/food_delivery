@@ -1,16 +1,11 @@
 # food_delivery
 
-A new Flutter project.
+This is a flutter app for food delivery for a single restaurant. This will aloow customers to make orders and view their delivery status.
+# Screenshots
 
-## Getting Started
+![login](https://github.com/Aayush032/food_delivery/assets/97399944/8685df37-9df9-4caa-bfc7-1726d83f53df) ![signup](https://github.com/Aayush032/food_delivery/assets/97399944/2b7fd5cb-528a-4641-804b-e563d9d9420f) ![home](https://github.com/Aayush032/food_delivery/assets/97399944/9cb414fd-663a-471a-ae12-4d820336e87c) ![drawer](https://github.com/Aayush032/food_delivery/assets/97399944/2a0d0bfd-2373-470a-b2d4-9e25280cd02c)
+![settings](https://github.com/Aayush032/food_delivery/assets/97399944/1eedb3cf-67cb-4f92-8981-95656602aaba)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
