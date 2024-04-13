@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/model/restaurant_model.dart';
 import 'package:food_delivery/pages/login_page.dart';
 import 'package:food_delivery/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
+    MultiProvider(providers: [
+      //theme provider
+      ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
-      child: const MyApp(),
       ),
+
+      //restaurant provider
+      ChangeNotifierProvider(
+      create: (context) => Restaurant(),
+      ),
+    ],
+    child: const MyApp(),
+    )
     );
 }
  class MyApp extends StatelessWidget {
