@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/model/cart_item.dart';
 import 'package:food_delivery/model/restaurant_model.dart';
+import 'package:food_delivery/widgets/quantity_selector.dart';
 import 'package:provider/provider.dart';
 
 class CartTile extends StatelessWidget {
@@ -12,12 +13,14 @@ class CartTile extends StatelessWidget {
     return Consumer<Restaurant>(
       builder: (context,restaurant,child){
         return Container(
-          margin: const EdgeInsets.all(12),
+          margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Theme.of(context).colorScheme.inversePrimary
-            )
+            color: Theme.of(context).colorScheme.secondary,
+            borderRadius: BorderRadius.circular(8),
+            // border: Border.all(
+            //   color: Theme.of(context).colorScheme.inversePrimary
+            // )
           ),
           child: Column(
             children: [
@@ -34,12 +37,44 @@ class CartTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(cartItem.food.name),
-                      Text("Rs. ${cartItem.food.price}"),
+                      Text(cartItem.food.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                      Text("Rs. ${cartItem.food.price}", style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),),
+                         //Quantity selector
+                  QuantitySelector(
+                    quantity: cartItem.quantity,
+                    food: cartItem.food,
+                     onIncrement: (){
+                      restaurant.addToCart(cartItem.food, cartItem.selectedAddons);
+                     }, 
+                     onDecrement:(){
+                      restaurant.removeFromCart(cartItem);
+                     } 
+                     ),
                     ],
-                  )
+                  ),
                 ],
-              )
+              ),
+              //Addons
+              SizedBox(
+                height: cartItem.selectedAddons.isEmpty ? 0: 60,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: cartItem.selectedAddons.map(
+                    (addons) => Padding(
+                      padding: const EdgeInsets.only(right:8.0),
+                      child: FilterChip(
+                        backgroundColor: Theme.of(context).colorScheme.secondary,
+                        label: Row(
+                          children: [
+                            Text(addons.name),
+                            Text(" (Rs. ${addons.price})")
+                          ],
+                        ),
+                         onSelected: (value){}),
+                    )
+                    ).toList(),
+                ),
+              ),
             ],
           ),
         );
